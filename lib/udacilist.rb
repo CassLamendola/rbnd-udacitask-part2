@@ -19,6 +19,9 @@ class UdaciList
   end
   def delete(index)
     @items.delete_at(index - 1)
+    if index > @items.length
+      raise UdaciListErrors::IndexExceedsListSize, "There are not #{index} items in '#{@title}'"
+    end
   end
   def all
     puts "-" * @title.length
