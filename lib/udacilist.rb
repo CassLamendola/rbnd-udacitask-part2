@@ -1,8 +1,10 @@
 class UdaciList
   attr_reader :title, :items
 
+  include CommandLineReporter
+
   def initialize(options={})
-    @title = options[:title]
+    options[:title] ? @title = options[:title] : @title = 'Untitled List'
     @items = []
   end
   def add(type, description, options={})
@@ -27,11 +29,26 @@ class UdaciList
     end
   end
   def all
-    puts "-" * @title.length
-    puts @title
-    puts "-" * @title.length
-    @items.each_with_index do |item, position|
-      puts "#{position + 1}) #{item.details}"
+    header(title: @title, align: 'center', bold: true, color: 'blue', rule: true)
+    table(border: true) do
+      row color: 'blue', header: true do
+        column 'Position', width: 10
+        column 'Description', width: 25
+        column 'Details', width: 30
+      end      
+      @items.each_with_index do |item, position|
+        row do
+          column "#{position + 1}) "
+          column item.description
+          column item.details
+        end
+      end
     end
+#    puts "-" * @title.length
+#    puts @title
+#    puts "-" * @title.length
+#    @items.each_with_index do |item, position|
+#      puts "#{position + 1}) #{item.details}"
+#    end
   end
 end
