@@ -9,4 +9,11 @@ module Listable
   	dates = "N/A" if !dates
   	return dates
   end
+  def format_priority(priority)
+    value = " ⇧" if priority == "high"
+    value = " ⇨" if priority == "medium"
+    value = " ⇩" if priority == "low"
+    value = "" if !priority
+    return value
+  end
 end
