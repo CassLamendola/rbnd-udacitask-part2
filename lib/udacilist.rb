@@ -1,8 +1,6 @@
 class UdaciList
-  attr_reader :title, :items
-
-  # include CommandLineReporter
-
+  attr_reader :title 
+  attr_accessor :items
 
   def initialize(options={})
     options[:title] ? @title = options[:title] : @title = 'Untitled List'
@@ -25,11 +23,11 @@ class UdaciList
   end
   def delete(index)
     @items.delete_at(index - 1)
-    if index > @items.length
+    if index - 1 > @items.length
       raise UdaciListErrors::IndexExceedsListSize, "There are not #{index} items in '#{@title}'"
     end
   end
-  def print_table
+  def all
     table = Terminal::Table.new title:@title do |t|
       @items.each_with_index do |item, position|
         t << [position + 1, item.details]
@@ -37,13 +35,15 @@ class UdaciList
     end
     puts table
   end
-  def all
-    print_table
-#    puts "-" * @title.length
-#    puts @title
-#    puts "-" * @title.length
-#    @items.each_with_index do |item, position|
-#      puts "#{position + 1}) #{item.details}"
-#    end
+  def filter(item_type)
+    filtered_list = UdaciList.new(title: @title)
+    filtered_list.items = @items.select do |item|
+      item.item_type == item_type
+    end
+    if filtered_list.items == []
+      raise UdaciListErrors::InvalidItemType, "There aren't any #{item_type} items"
+    else
+      filtered_list.all
+    end
   end
 end

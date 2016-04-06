@@ -1,7 +1,6 @@
 require 'chronic'
-require 'colorize' # I used 'colored' from 'command_line_reporter' instead because it broke my program.
+require 'colorize'
 # Find a third gem of your choice and add it to your project
-# require 'command_line_reporter'
 require 'terminal-table'
 require 'date'
 require_relative "lib/listable"
@@ -46,4 +45,4 @@ new_list.all
 
 # DEMO FILTER BY ITEM TYPE
 # ------------------------
-# new_list.filter("event")
+new_list.filter("event")

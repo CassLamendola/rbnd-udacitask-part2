@@ -10,7 +10,6 @@ module Listable
   	return dates
   end
   def format_priority(priority)
-    # Uses 'colored' gem (from 'command_line_reporter') for coloring instead of 'colorize'
     value = " ⇧".red if priority == "high"
     value = " ⇨".yellow if priority == "medium"
     value = " ⇩".green if priority == "low"
