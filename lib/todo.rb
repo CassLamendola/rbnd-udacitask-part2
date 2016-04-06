@@ -1,8 +1,9 @@
 class TodoItem
   include Listable
-  attr_reader :description, :due, :priority, :item_type
+  attr_reader :description, :due, :item_type
+  attr_accessor :priority
 
-  def initialize(description, options={})
+  def initialize(description, options = {})
     @description = description
     @due = options[:due] ? Chronic.parse(options[:due]) : options[:due]
     @priority = options[:priority]

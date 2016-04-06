@@ -6,6 +6,7 @@ module Listable
   	dates = options[:start].strftime("%D") if options[:start]
   	dates << options[:end].strftime("%D") if options[:end]
   	dates = options[:due_date].strftime("%D") if options[:due_date]
+  	dates = options[:date].strftime("%D") if options[:date]
   	dates = "N/A" if !dates
   	return dates
   end
@@ -15,5 +16,10 @@ module Listable
     value = " ⇩".green if priority == "low"
     value = "" if !priority
     return value
+  end
+  def format_time(options = {})
+  	times = options[:start].strftime("%l:%M %P") if options[:start]
+  	times << options[:end].strftime("%l:%M %P") if options[:end]
+  	return times
   end
 end

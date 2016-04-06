@@ -2,7 +2,7 @@ class EventItem
   include Listable
   attr_reader :description, :start_date, :end_date, :item_type
 
-  def initialize(description, options={})
+  def initialize(description, options = {})
     @description = description
     @start_date = Chronic.parse(options[:start_date]) if options[:start_date]
     @end_date = Chronic.parse(options[:end_date]) if options[:end_date]

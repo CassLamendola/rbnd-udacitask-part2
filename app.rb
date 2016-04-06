@@ -9,6 +9,7 @@ require_relative "lib/udacilist"
 require_relative "lib/todo"
 require_relative "lib/event"
 require_relative "lib/link"
+require_relative "lib/appointment"
 
 list = UdaciList.new(title: "Julia's Stuff")
 list.add("todo", "Buy more cat food", due: "2016-02-03", priority: "low")
@@ -46,3 +47,11 @@ new_list.all
 # DEMO FILTER BY ITEM TYPE
 # ------------------------
 new_list.filter("event")
+
+# CODE TO TEST OUT ADDITIONAL FEATURES
+# ------------------------------------
+new_list.items[1].priority = 'low'
+
+new_list.add("appointment", "Dentist appointment", date: "next thursday", start_time: "2:30pm")
+new_list.all
+
