@@ -1,7 +1,8 @@
 class UdaciList
   attr_reader :title, :items
 
-  include CommandLineReporter
+  # include CommandLineReporter
+
 
   def initialize(options={})
     options[:title] ? @title = options[:title] : @title = 'Untitled List'
@@ -28,22 +29,16 @@ class UdaciList
       raise UdaciListErrors::IndexExceedsListSize, "There are not #{index} items in '#{@title}'"
     end
   end
-  def all
-    header(title: @title, align: 'center', bold: true, color: 'blue', rule: true)
-    table(border: true) do
-      row color: 'blue', header: true do
-        column 'Position', width: 10
-        column 'Description', width: 25
-        column 'Details', width: 30
-      end      
+  def print_table
+    table = Terminal::Table.new title:@title do |t|
       @items.each_with_index do |item, position|
-        row do
-          column "#{position + 1}) "
-          column item.description
-          column item.details
-        end
+        t << [position + 1, item.details]
       end
     end
+    puts table
+  end
+  def all
+    print_table
 #    puts "-" * @title.length
 #    puts @title
 #    puts "-" * @title.length

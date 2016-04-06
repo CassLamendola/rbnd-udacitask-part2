@@ -1,7 +1,8 @@
 require 'chronic'
-# require 'colorize'
+require 'colorize' # I used 'colored' from 'command_line_reporter' instead because it broke my program.
 # Find a third gem of your choice and add it to your project
-require 'command_line_reporter'
+# require 'command_line_reporter'
+require 'terminal-table'
 require 'date'
 require_relative "lib/listable"
 require_relative "lib/errors"
