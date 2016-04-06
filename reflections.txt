@@ -1,13 +1,24 @@
 # What you added to Udacitask 2.0
 # -------------------------------------------------------
 1. What is the gem of your choice and how did you use it?
+	I chose to use terminal-table. I really wanted to use a gem to display the list in a more appealing way. I originally wanted to use CommandLineReporter, because I prefer its appearance, but there were issues with using ansi colors with the priority symbols. It messed with the table padding.
+
 2. Describe the 2 features you added to the project.
-  a) Feature 1...
-  b) Feature 2...
+  a) Feature 1. Allows user to change the priority level of an item
+  b) Feature 2. New item class for appointments. It includes a date, start time, and end time.
 
 # REFLECTIONS
 # -------------------------------------------------------
 1. How long did you spend working on this project?
+	I don't know exactly, but I would guess I spent around 6 hours. That seems like a really long time. The beginning went very quickly, but I got hung up on adding my own gem and features.
+
 2. What was the most rewarding challenge you conquered?
+	I was really challenged by implementing a gem to format my app into a table. I spent hours trying to get CommandLineReporter to work, and while I ended up having to use a different gem, I learned a lot through the process. Once I made the switch to the terminal-table gem, it went so smoothly.
+
 3. What two additional features did you build? Why?
+	First, I added a feature to change the priority level of an item. I thought this was important because priority levels are not all that useful if you can't change them. 
+
+	Second, I added a new item type for appointments. I thought this would be useful because appointments have a time as well as a date. I could have altered the event item to include an optional time, but I thought it made more sense to make an separate item.
+
 4. Where do you still have room to grow?
+	I think some of my methods are too long. I don't really know how to make them any simpler. For example, the "add" method in udacilist has 6 conditional statements. But I coudn't think of a better way to do what I needed to do.
