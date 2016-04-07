@@ -3,6 +3,7 @@ require 'colorize'
 # Find a third gem of your choice and add it to your project
 require 'terminal-table'
 require 'date'
+require 'bundler/setup'
 require_relative "lib/listable"
 require_relative "lib/errors"
 require_relative "lib/udacilist"
